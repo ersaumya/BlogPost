@@ -1,6 +1,5 @@
+import { registerAction } from './actions/register.action';
 import { createReducer, on, Action } from '@ngrx/store';
-
-import { registerAction } from './actions';
 import { AuthState } from '../types/auth-state';
 
 const initialState: AuthState = {
