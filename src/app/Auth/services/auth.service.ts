@@ -1,3 +1,4 @@
+import { LoginRequest } from './../types/login-request';
 import { IAppConfig, APP_CONFIG } from './../../Shared/config/appconfig';
 import { AuthResponse } from './../types/auth-response';
 import { HttpClient } from '@angular/common/http';
@@ -17,10 +18,17 @@ export class AuthService {
     @Inject(APP_CONFIG) private apiconfig: IAppConfig
   ) {}
 
+  getUser(response:AuthResponse):CurrentUser{
+    return response.user
+  }
+
   register(data: RegisterRequest): Observable<CurrentUser> {
     const url =this.apiconfig.apiEndPoint + '/users';
-    return this.http
-      .post<AuthResponse>(url, data)
-      .pipe(map((response: AuthResponse) => response.user));
+    return this.http.post<AuthResponse>(url, data).pipe(map(this.getUser));
+  }
+
+  login(data:LoginRequest):Observable<CurrentUser>{
+    const url=this.apiconfig.apiEndPoint + '/users/login';
+    return this.http.post<AuthResponse>(url, data).pipe(map(this.getUser));
   }
 }
