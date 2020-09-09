@@ -9,16 +9,22 @@ import { Routes, RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { reducers } from './store/reducers';
 import { EffectsModule } from '@ngrx/effects';
+import { LoginComponent } from './components/login/login.component';
 
 
 const routes: Routes = [
   {
-    path:'register',component:RegisterComponent
-  }
+    path: 'register',
+    component: RegisterComponent,
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
 ];
 
 @NgModule({
-  declarations: [RegisterComponent],
+  declarations: [RegisterComponent, LoginComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
