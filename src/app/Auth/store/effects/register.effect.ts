@@ -11,7 +11,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 @Injectable()
-export class RegisterEffects {
+export class RegisterEffect {
     
   constructor(
      private actions$: Actions,
