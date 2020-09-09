@@ -1,3 +1,4 @@
+import { LoginEffect } from './store/effects/login.effect';
 import { BackendErrorMessagesModule } from 'src/app/Shared/modules/backend-error-messages/backend-error-messages.module';
 import { RegisterEffect } from './store/effects/register.effect';
 import { StoreModule } from '@ngrx/store';
@@ -23,7 +24,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     ReactiveFormsModule,
     StoreModule.forFeature('auth', reducers),
-    EffectsModule.forFeature([RegisterEffect]),
+    EffectsModule.forFeature([RegisterEffect,LoginEffect]),
     BackendErrorMessagesModule
   ],
 })
