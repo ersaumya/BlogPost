@@ -1,6 +1,7 @@
+import { IAppConfig, APP_CONFIG } from './../../Shared/config/appconfig';
 import { AuthResponse } from './../types/auth-response';
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { CurrentUser } from './../../Shared/types/current-user';
@@ -11,11 +12,15 @@ import { environment } from '../../../environments/environment.prod';
   providedIn: 'root',
 })
 export class AuthService {
-  
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    @Inject(APP_CONFIG) private apiconfig: IAppConfig
+  ) {}
 
   register(data: RegisterRequest): Observable<CurrentUser> {
-    const url = environment.apiUrl + '/users'
-    return this.http.post<AuthResponse>(url,data).pipe(map((response:AuthResponse)=>response.user))
+    const url =this.apiconfig.apiEndPoint + '/users';
+    return this.http
+      .post<AuthResponse>(url, data)
+      .pipe(map((response: AuthResponse) => response.user));
   }
 }

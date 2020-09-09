@@ -9,12 +9,14 @@ import { AuthModule } from './Auth/auth.module';
 import { environment } from 'src/environments/environment';
 import { HttpClientModule } from '@angular/common/http';
 import { EffectsModule } from '@ngrx/effects';
+import { APP_CONFIG, IAppConfig } from './Shared/config/appconfig';
 
+const AppConfig: IAppConfig = {
+  apiEndPoint: environment.apiEndPoint,
+};
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AuthModule,
@@ -22,12 +24,12 @@ import { EffectsModule } from '@ngrx/effects';
     StoreModule.forRoot({}),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({
-      maxAge: 25, 
-      logOnly: environment.production, 
+      maxAge: 25,
+      logOnly: environment.production,
     }),
-    AppRoutingModule
+    AppRoutingModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [{ provide: APP_CONFIG, useValue: AppConfig }],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
