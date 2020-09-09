@@ -1,3 +1,4 @@
+import { NavBarModule } from './Shared/modules/nav-bar/nav-bar.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
@@ -21,6 +22,7 @@ const AppConfig: IAppConfig = {
     BrowserModule,
     AuthModule,
     HttpClientModule,
+    NavBarModule,
     StoreModule.forRoot({}),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({
