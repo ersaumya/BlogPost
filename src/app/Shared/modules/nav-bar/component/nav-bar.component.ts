@@ -1,8 +1,9 @@
-import { isLoggedInSelector, isAnonymousSelector, currentUserSelector } from './../../../../../Auth/store/selectors';
-import { CurrentUser } from './../../../../types/current-user';
+import { isLoggedInSelector, currentUserSelector, isAnonymousSelector } from './../../../../Auth/store/selectors';
+import { CurrentUser } from './../../../types/current-user';
 import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
+
 
 @Component({
   selector: 'app-navbar',
