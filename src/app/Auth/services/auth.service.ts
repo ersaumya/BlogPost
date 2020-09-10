@@ -31,4 +31,9 @@ export class AuthService {
     const url=this.apiconfig.apiEndPoint + '/users/login';
     return this.http.post<AuthResponse>(url, data).pipe(map(this.getUser));
   }
+
+  getCurrentUser():Observable<CurrentUser>{
+    const url=this.apiconfig.apiEndPoint + '/user';
+    return this.http.get(url).pipe(map(this.getUser))
+  }
 }
