@@ -5,4 +5,5 @@ export interface AuthState {
     currentUser:CurrentUser | null
     isLoggedIn:boolean | null
     validationErrors:BackendErrors | null
+    isLoading:boolean
 }
