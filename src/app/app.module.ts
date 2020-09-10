@@ -1,3 +1,4 @@
+import { AuthInterceptor } from './Shared/services/auth.interceptor';
 import { NavBarModule } from './Shared/modules/nav-bar/nav-bar.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -8,7 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthModule } from './Auth/auth.module';
 import { environment } from 'src/environments/environment';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { EffectsModule } from '@ngrx/effects';
 import { APP_CONFIG, IAppConfig } from './Shared/config/appconfig';
 
@@ -31,7 +32,10 @@ const AppConfig: IAppConfig = {
     }),
     AppRoutingModule,
   ],
-  providers: [{ provide: APP_CONFIG, useValue: AppConfig }],
+  providers: [
+    { provide: APP_CONFIG, useValue: AppConfig },
+    { provide: HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true }
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
