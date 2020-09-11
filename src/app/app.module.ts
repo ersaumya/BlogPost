@@ -1,3 +1,4 @@
+import { GlobalBlogsModule } from './GlobalBlogs/global-blogs.module';
 import { AuthInterceptor } from './Shared/services/auth.interceptor';
 import { NavBarModule } from './Shared/modules/nav-bar/nav-bar.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -30,6 +31,7 @@ const AppConfig: IAppConfig = {
       maxAge: 25,
       logOnly: environment.production,
     }),
+    GlobalBlogsModule,
     AppRoutingModule,
   ],
   providers: [
