@@ -1,7 +1,8 @@
+import { BlogsModule } from './../Shared/modules/blogs/blogs.module';
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { GlobalBlogsComponent } from './global-blogs/global-blogs.component';
+import { GlobalBlogsComponent } from './component/global-blogs.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,6 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [GlobalBlogsComponent],
-  imports: [CommonModule, RouterModule.forChild(routes)],
+  imports: [CommonModule, RouterModule.forChild(routes), BlogsModule],
 })
 export class GlobalBlogsModule {}
