@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { GetBlogEffect } from './store/effects/getBlog.effect';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -12,6 +13,7 @@ import { reducers } from 'src/app/Shared/modules/blogs/store/reducers';
     CommonModule,
     StoreModule.forFeature('blogs', reducers),
     EffectsModule.forFeature([GetBlogEffect]),
+    RouterModule
   ],
   exports: [BlogsComponent],
 })
