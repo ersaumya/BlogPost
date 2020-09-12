@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GlobalBlogsComponent implements OnInit {
 
+  apiUrl='/articles'
   constructor() { }
 
   ngOnInit(): void {
