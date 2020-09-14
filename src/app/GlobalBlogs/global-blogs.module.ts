@@ -1,3 +1,4 @@
+import { BannerModule } from './../Shared/modules/banner/banner.module';
 import { BlogsModule } from './../Shared/modules/blogs/blogs.module';
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -13,6 +14,11 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [GlobalBlogsComponent],
-  imports: [CommonModule, RouterModule.forChild(routes), BlogsModule],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(routes),
+    BlogsModule,
+    BannerModule
+  ],
 })
 export class GlobalBlogsModule {}
