@@ -1,3 +1,4 @@
+import { LoadingModule } from './../loading/loading.module';
 import { ErrorMessageModule } from './../error-message/error-message.module';
 import { RouterModule } from '@angular/router';
 import { GetBlogEffect } from './store/effects/getBlog.effect';
@@ -15,6 +16,7 @@ import { reducers } from 'src/app/Shared/modules/blogs/store/reducers';
     StoreModule.forFeature('blogs', reducers),
     EffectsModule.forFeature([GetBlogEffect]),
     ErrorMessageModule,
+    LoadingModule,
     RouterModule
   ],
   exports: [BlogsComponent],
