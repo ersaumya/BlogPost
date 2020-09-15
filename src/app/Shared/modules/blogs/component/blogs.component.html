@@ -21,5 +21,10 @@
       Here list of Tags
     </a>
   </div>
-  Pagination
+  <app-pagination 
+  [total]="(blog$ | async)?.articlesCount"
+  [limit]="limit"
+  [url]="baseUrl"
+  [currentPage]="currentPage">
+  </app-pagination>
 </div>

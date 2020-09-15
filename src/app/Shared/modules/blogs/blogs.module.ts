@@ -1,3 +1,4 @@
+import { PaginationModule } from './../pagination/pagination.module';
 import { LoadingModule } from './../loading/loading.module';
 import { ErrorMessageModule } from './../error-message/error-message.module';
 import { RouterModule } from '@angular/router';
@@ -17,6 +18,7 @@ import { reducers } from 'src/app/Shared/modules/blogs/store/reducers';
     EffectsModule.forFeature([GetBlogEffect]),
     ErrorMessageModule,
     LoadingModule,
+    PaginationModule,
     RouterModule
   ],
   exports: [BlogsComponent],
