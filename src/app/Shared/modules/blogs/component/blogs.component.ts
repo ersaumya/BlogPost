@@ -1,4 +1,5 @@
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { stringify,parseUrl } from 'query-string';
 import { environment } from './../../../../../environments/environment';
 import { blogSelector, errorSelector, isLoadingSelector } from './../store/selectors';
 import { GetblogResponse } from './../types/getblog-response';
@@ -32,14 +33,14 @@ export class BlogsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.initializeValues();
     this.initializeListiners();
-    this.fetchData();
   }
 
   initializeListiners(): void {
     this.queryParamsSubscription = this.route.queryParams.subscribe(
       (params: Params) => {
-        //console.log('params', params);
+        console.log('params', params);
         this.currentPage=Number(params.page || '1')
+        this.fetchBlog();
         //console.log('current page',this.currentPage);
       }
     );
@@ -56,7 +57,18 @@ export class BlogsComponent implements OnInit, OnDestroy {
     this.baseUrl = this.router.url.split('?')[0];
   }
 
-  fetchData(): void {
-    this.store.dispatch(getBlogAction({ url: this.apiUrl }));
+  fetchBlog(): void {
+    const offset = this.currentPage * this.limit - this.limit;
+    const parsedUrl = parseUrl(this.apiUrl);
+    const stringifiedParams = stringify({
+      limit: this.limit,
+      offset,
+      ...parsedUrl.query,
+    });
+    //concatenate base url with stringified params
+    const apiUrlWithParams = `${parsedUrl.url}?${stringifiedParams}`;
+    //console.log('apiUrlWithParams',apiUrlWithParams)
+    //console.log('foo', parsedUrl, this.apiUrl);
+    this.store.dispatch(getBlogAction({ url: apiUrlWithParams }));
   }
 }
