@@ -1,6 +1,7 @@
 import { BlogsState } from './../types/blogs-state';
 import { getBlogAction, getBlogFailureAction, getBlogSuccessAction } from './actions/getBlog.action';
 import { Action, createReducer, on } from '@ngrx/store';
+import { routerNavigationAction } from '@ngrx/router-store';
 
 const initialState:BlogsState={
     data:null,
@@ -30,7 +31,9 @@ const blogReducer = createReducer(
       ...state,
       isLoading: false,
     })
-  )
+  ),
+  on(routerNavigationAction,
+    ():BlogsState => initialState)
 );
 export function reducers(state: BlogsState, action: Action) {
   return blogReducer(state, action);
