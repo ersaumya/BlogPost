@@ -1,3 +1,4 @@
+import { TagListModule } from './../tag-list/tag-list.module';
 import { PaginationModule } from './../pagination/pagination.module';
 import { LoadingModule } from './../loading/loading.module';
 import { ErrorMessageModule } from './../error-message/error-message.module';
@@ -19,7 +20,8 @@ import { reducers } from 'src/app/Shared/modules/blogs/store/reducers';
     ErrorMessageModule,
     LoadingModule,
     PaginationModule,
-    RouterModule
+    RouterModule,
+    TagListModule
   ],
   exports: [BlogsComponent],
 })

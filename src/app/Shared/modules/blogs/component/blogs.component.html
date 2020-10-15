@@ -18,7 +18,7 @@
       <h1>{{ article.title }}</h1>
       <p>{{ article.description }}</p>
       <span>Read more..</span>
-      Here list of Tags
+      <app-tag-list [tags]="article.tagList"></app-tag-list>
     </a>
   </div>
   <app-pagination 
