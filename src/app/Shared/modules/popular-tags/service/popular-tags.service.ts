@@ -4,6 +4,7 @@ import { PopularTag } from './../../../types/popular-tag';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
+import { GetPopularTagsResponse } from '../types/getpopulartags-response';
 
 @Injectable({
   providedIn: 'root',
@@ -17,9 +18,9 @@ export class PopularTagsService {
   getPopularTags(): Observable<PopularTag[]> {
     const url=this.apiconfig.apiEndPoint + '/tags'
     return this.http.get(url).pipe(
-      map((response:any)=>{
-       return response.tags
+      map((response: GetPopularTagsResponse) => {
+        return response.tags;
       })
-    )
+    );
   }
 }
