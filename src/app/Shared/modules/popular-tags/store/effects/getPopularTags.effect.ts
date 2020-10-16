@@ -18,8 +18,8 @@ export class GetPopularTagsEffect {
       ofType(getPopularTagsAction),
       switchMap(() => {
         return this.popularTagService.getPopularTags().pipe(
-          map((popularTag: PopularTag[]) => {
-            return getPopularTagsSuccessAction({popularTag});
+          map((popularTags: PopularTag[]) => {
+            return getPopularTagsSuccessAction({popularTags});
           }),
           catchError(() => {
             return of(getPopularTagsFailureAction());

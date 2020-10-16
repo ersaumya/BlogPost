@@ -22,7 +22,7 @@ const popularTagsReducer = createReducer(
     (state,action): PopularTagsState => ({
       ...state,
       isLoading: false,
-      data:action.popularTag
+      data:action.popularTags
     })
   ),
   on(
