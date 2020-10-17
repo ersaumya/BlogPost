@@ -1,3 +1,4 @@
+import { BlogsTogglerModule } from './../Shared/modules/blogs-toggler/blogs-toggler.module';
 import { PopularTagsModule } from './../Shared/modules/popular-tags/popular-tags.module';
 import { BannerModule } from './../Shared/modules/banner/banner.module';
 import { BlogsModule } from './../Shared/modules/blogs/blogs.module';
@@ -20,7 +21,8 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     BlogsModule,
     BannerModule,
-    PopularTagsModule
+    PopularTagsModule,
+    BlogsTogglerModule,
   ],
 })
 export class GlobalBlogsModule {}
