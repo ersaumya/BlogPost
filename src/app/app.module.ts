@@ -1,3 +1,4 @@
+import { MyBlogsModule } from './MyBlogs/my-blogs.module';
 import { GlobalBlogsModule } from './GlobalBlogs/global-blogs.module';
 import { AuthInterceptor } from './Shared/services/auth.interceptor';
 import { NavBarModule } from './Shared/modules/nav-bar/nav-bar.module';
@@ -33,6 +34,7 @@ const AppConfig: IAppConfig = {
       logOnly: environment.production,
     }),
     GlobalBlogsModule,
+    MyBlogsModule,
     AppRoutingModule,
   ],
   providers: [
