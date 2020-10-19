@@ -38,7 +38,7 @@ export class BlogsComponent implements OnInit, OnDestroy {
   initializeListiners(): void {
     this.queryParamsSubscription = this.route.queryParams.subscribe(
       (params: Params) => {
-        console.log('params', params);
+        //console.log('params', params);
         this.currentPage=Number(params.page || '1')
         this.fetchBlog();
         //console.log('current page',this.currentPage);
