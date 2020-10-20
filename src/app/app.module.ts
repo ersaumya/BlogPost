@@ -1,3 +1,4 @@
+import { TagBlogsModule } from './TagBlogs/tag-blogs.module';
 import { MyBlogsModule } from './MyBlogs/my-blogs.module';
 import { GlobalBlogsModule } from './GlobalBlogs/global-blogs.module';
 import { AuthInterceptor } from './Shared/services/auth.interceptor';
@@ -35,6 +36,7 @@ const AppConfig: IAppConfig = {
     }),
     GlobalBlogsModule,
     MyBlogsModule,
+    TagBlogsModule,
     AppRoutingModule,
   ],
   providers: [
