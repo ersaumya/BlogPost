@@ -1,3 +1,4 @@
+import { ArticleModule } from './Article/article.module';
 import { TagBlogsModule } from './TagBlogs/tag-blogs.module';
 import { MyBlogsModule } from './MyBlogs/my-blogs.module';
 import { GlobalBlogsModule } from './GlobalBlogs/global-blogs.module';
@@ -37,6 +38,7 @@ const AppConfig: IAppConfig = {
     GlobalBlogsModule,
     MyBlogsModule,
     TagBlogsModule,
+    ArticleModule,
     AppRoutingModule,
   ],
   providers: [
