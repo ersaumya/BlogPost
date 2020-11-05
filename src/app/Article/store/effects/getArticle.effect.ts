@@ -1,5 +1,5 @@
 import { Article } from './../../../Shared/types/article';
-import { ArticleService as SharedArticleService} from './../../../Shared/services/article.service';
+import { ArticleService as SharedArticleService} from '../../../Shared/services/article.service';
 import { Injectable } from '@angular/core';
 import { createEffect, Actions, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';

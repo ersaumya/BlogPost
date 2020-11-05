@@ -1,5 +1,4 @@
 import { CurrentUser } from './../../Shared/types/current-user';
-import { Article } from './../../Shared/types/article';
 import { currentUserSelector } from './../../Auth/store/selectors';
 import {
   articleSelector,
@@ -12,6 +11,7 @@ import { getArticleAction } from './../store/actions/getArticle.action';
 import { select, Store } from '@ngrx/store';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { map } from 'rxjs/operators';
+import { Article } from 'src/app/Shared/types/article';
 
 @Component({
   selector: 'app-article',

@@ -2,7 +2,7 @@ import { StoreModule } from '@ngrx/store';
 import { Routes, RouterModule } from '@angular/router';
 import { GetArticleEffect } from './store/effects/getArticle.effect';
 import { EffectsModule } from '@ngrx/effects';
-import { ArticleService } from './../Shared/services/article.service';
+import { ArticleService } from '../Shared/services/article.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ArticleComponent } from './component/article.component';
