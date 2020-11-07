@@ -1,3 +1,4 @@
+import { ArticleFormModule } from './../Shared/modules/article-form/article-form.module';
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -11,9 +12,6 @@ const routes:Routes=[
 
 @NgModule({
   declarations: [CreateArticleComponent],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(routes)
-  ]
+  imports: [CommonModule, RouterModule.forChild(routes), ArticleFormModule],
 })
-export class CreateArticleModule { }
+export class CreateArticleModule {}
