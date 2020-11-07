@@ -1,3 +1,4 @@
+import { CreateArticleModule } from './CreateArticle/create-article.module';
 import { ArticleModule } from './Article/article.module';
 import { TagBlogsModule } from './TagBlogs/tag-blogs.module';
 import { MyBlogsModule } from './MyBlogs/my-blogs.module';
@@ -38,6 +39,7 @@ const AppConfig: IAppConfig = {
     GlobalBlogsModule,
     MyBlogsModule,
     TagBlogsModule,
+    CreateArticleModule,//order is important as routing of article & create article is same
     ArticleModule,
     AppRoutingModule,
   ],
