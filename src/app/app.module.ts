@@ -1,3 +1,4 @@
+import { EditArticleModule } from './EditArticle/edit-article.module';
 import { CreateArticleModule } from './CreateArticle/create-article.module';
 import { ArticleModule } from './Article/article.module';
 import { TagBlogsModule } from './TagBlogs/tag-blogs.module';
@@ -41,6 +42,7 @@ const AppConfig: IAppConfig = {
     TagBlogsModule,
     CreateArticleModule,//order is important as routing of article & create article is same
     ArticleModule,
+    EditArticleModule,
     AppRoutingModule,
   ],
   providers: [
