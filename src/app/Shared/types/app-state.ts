@@ -1,3 +1,4 @@
+import { EditArticleState } from './../../EditArticle/types/edit-article-state';
 import { CreateArticleState } from './../../CreateArticle/types/create-article-state';
 import { ArticleState } from './../../Article/types/article-state';
 import { PopularTagsState } from './../modules/popular-tags/types/popularTags-state';
@@ -9,5 +10,6 @@ export interface AppState {
     blogs:BlogsState
     popularTags:PopularTagsState,
     article:ArticleState,
-    createArticle:CreateArticleState
+    createArticle:CreateArticleState,
+    editArticle:EditArticleState
 }
