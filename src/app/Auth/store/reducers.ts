@@ -1,3 +1,4 @@
+import { updateCurrentUserSuccessAction } from './actions/updateCurrentUser.action';
 import { loginAction, loginSuccessAction, loginFailureAction } from './actions/login.action';
 import { AuthState } from './../types/auth-state';
 import { registerAction, registerSuccessAction, registerFailureAction } from './actions/register.action';
@@ -89,7 +90,14 @@ const authReducer = createReducer(
       isLoggedIn: false,
       currentUser: null,
     })
-  )
+  ),
+  on(
+    updateCurrentUserSuccessAction,
+    (state,action):AuthState=>({
+      ...state,
+      currentUser:action.currentUser
+    })
+    )
 );
 
 export function reducers(state:AuthState,action:Action){
