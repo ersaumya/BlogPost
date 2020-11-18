@@ -1,3 +1,4 @@
+import { UpdateCurrentUserEffect } from './store/effects/updateCurrentUser.effect';
 import { GetCurrentUserEffect } from './store/effects/getCurrentUser.effect';
 import { LoginEffect } from './store/effects/login.effect';
 import { BackendErrorMessagesModule } from 'src/app/Shared/modules/backend-error-messages/backend-error-messages.module';
@@ -35,6 +36,7 @@ const routes: Routes = [
       RegisterEffect,
       LoginEffect,
       GetCurrentUserEffect,
+      UpdateCurrentUserEffect
     ]),
     BackendErrorMessagesModule,
   ],
