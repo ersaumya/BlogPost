@@ -1,3 +1,4 @@
+import { SettingsModule } from './Settings/settings.module';
 import { EditArticleModule } from './EditArticle/edit-article.module';
 import { CreateArticleModule } from './CreateArticle/create-article.module';
 import { ArticleModule } from './Article/article.module';
@@ -30,7 +31,7 @@ const AppConfig: IAppConfig = {
     AuthModule,
     HttpClientModule,
     NavBarModule,
-    StoreModule.forRoot({router:routerReducer}),
+    StoreModule.forRoot({ router: routerReducer }),
     StoreRouterConnectingModule.forRoot(),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({
@@ -40,14 +41,15 @@ const AppConfig: IAppConfig = {
     GlobalBlogsModule,
     MyBlogsModule,
     TagBlogsModule,
-    CreateArticleModule,//order is important as routing of article & create article is same
+    CreateArticleModule, //order is important as routing of article & create article is same
     ArticleModule,
     EditArticleModule,
     AppRoutingModule,
+    SettingsModule
   ],
   providers: [
     { provide: APP_CONFIG, useValue: AppConfig },
-    { provide: HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true }
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })
