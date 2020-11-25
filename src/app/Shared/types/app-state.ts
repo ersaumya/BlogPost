@@ -1,3 +1,4 @@
+import { SettingState } from './../../Settings/types/setting-state';
 import { EditArticleState } from './../../EditArticle/types/edit-article-state';
 import { CreateArticleState } from './../../CreateArticle/types/create-article-state';
 import { ArticleState } from './../../Article/types/article-state';
@@ -11,5 +12,6 @@ export interface AppState {
     popularTags:PopularTagsState,
     article:ArticleState,
     createArticle:CreateArticleState,
-    editArticle:EditArticleState
+    editArticle:EditArticleState,
+    settings:SettingState
 }
