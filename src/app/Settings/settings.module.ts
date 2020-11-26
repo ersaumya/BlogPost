@@ -4,18 +4,24 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SettingsComponent } from './component/settings.component';
 import { reducers } from './store/reducers';
+import { BackendErrorMessagesModule } from '../Shared/modules/backend-error-messages/backend-error-messages.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
     path: 'settings',
-    component:SettingsComponent,
+    component: SettingsComponent,
   },
 ];
 
 @NgModule({
   declarations: [SettingsComponent],
-  imports: [CommonModule, 
+  imports: [
+    CommonModule,
     RouterModule.forChild(routes),
-  StoreModule.forFeature('settings',reducers)],
+    BackendErrorMessagesModule,
+    ReactiveFormsModule,
+    StoreModule.forFeature('settings', reducers),
+  ],
 })
 export class SettingsModule {}
