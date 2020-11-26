@@ -6,19 +6,24 @@
                 <form [formGroup]="articleForm" (ngSubmit)="onSubmit()">
                     <fieldset>
                         <fieldset class="form-group">
-                            <input type="text" class="form-control form-control-lg" placeholder="Article title" formControlName="title" >
+                            <label>Article title</label>
+                            <input type="text" class="form-control"  formControlName="title" >
                         </fieldset>
                         <fieldset class="form-group">
-                            <input type="text" class="form-control form-control-lg" placeholder="Description" formControlName="description">
+                            <label>Description</label>
+                            <input type="text" class="form-control" formControlName="description">
                         </fieldset>
                         <fieldset class="form-group">
-                            <textarea class="form-control form-control-lg" rows="8" placeholder="Article content" formControlName="body"></textarea>
+                            <label>Article content</label>
+                            <textarea class="form-control" rows="8" formControlName="body">
+                            </textarea>
                         </fieldset>
                         <fieldset class="form-group">
-                            <input type="text" class="form-control form-control-lg" placeholder="Enter tags" formControlName="tagList">
+                            <label>Enter tags</label>
+                            <input type="text" class="form-control" formControlName="tagList">
                         </fieldset>
                         <fieldset>
-                            <button type="submit" [disabled]="articleForm.invalid || isSubmittng" class="btn btn-lg pull-xs-right btn-primary">
+                            <button type="submit" [disabled]="articleForm.invalid || isSubmittng" class="btn pull-xs-right btn-primary">
                                 Publish article
                             </button>
                         </fieldset>
