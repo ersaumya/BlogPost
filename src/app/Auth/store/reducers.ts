@@ -1,17 +1,29 @@
+import { logoutAction } from './actions/logout.action';
 import { updateCurrentUserSuccessAction } from './actions/updateCurrentUser.action';
-import { loginAction, loginSuccessAction, loginFailureAction } from './actions/login.action';
+import {
+  loginAction,
+  loginSuccessAction,
+  loginFailureAction,
+} from './actions/login.action';
 import { AuthState } from './../types/auth-state';
-import { registerAction, registerSuccessAction, registerFailureAction } from './actions/register.action';
+import {
+  registerAction,
+  registerSuccessAction,
+  registerFailureAction,
+} from './actions/register.action';
 import { createReducer, on, Action } from '@ngrx/store';
-import { getCurrentUserAction, getCurrentUserSuccessAction, getCurrentUserFailureAction } from './actions/getCurrentUser.action';
-
+import {
+  getCurrentUserAction,
+  getCurrentUserSuccessAction,
+  getCurrentUserFailureAction,
+} from './actions/getCurrentUser.action';
 
 const initialState: AuthState = {
   isSubmitting: false,
-  isLoading:false,
-  currentUser:null,
-  isLoggedIn:null,
-  validationErrors:null
+  isLoading: false,
+  currentUser: null,
+  isLoggedIn: null,
+  validationErrors: null,
 };
 
 const authReducer = createReducer(
@@ -93,13 +105,21 @@ const authReducer = createReducer(
   ),
   on(
     updateCurrentUserSuccessAction,
-    (state,action):AuthState=>({
+    (state, action): AuthState => ({
       ...state,
-      currentUser:action.currentUser
+      currentUser: action.currentUser,
     })
-    )
+  ),
+  on(
+    logoutAction,
+    (state): AuthState => ({
+      ...state,
+      ...initialState,
+      isLoggedIn: false,
+    })
+  )
 );
 
-export function reducers(state:AuthState,action:Action){
-    return authReducer(state,action)
+export function reducers(state: AuthState, action: Action) {
+  return authReducer(state, action);
 }

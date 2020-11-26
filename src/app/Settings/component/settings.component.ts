@@ -1,3 +1,6 @@
+import { logoutAction } from './../../Auth/store/actions/logout.action';
+import { updateCurrentUserAction } from './../../Auth/store/actions/updateCurrentUser.action';
+import { CurrentUserInput } from './../../Shared/types/current-user-input';
 import {
   isSubmittingSelector,
   validationErrorsSelector,
@@ -54,12 +57,16 @@ export class SettingsComponent implements OnInit, OnDestroy {
     });
   }
 
-  submit(){
-
+  submit() {
+    const currentUserInput: CurrentUserInput = {
+      ...this.currentUser,
+      ...this.settingForm.value,
+    };
+    this.store.dispatch(updateCurrentUserAction({ currentUserInput }));
   }
 
-  logout(){
-    
+  logout() {
+    this.store.dispatch(logoutAction());
   }
 
   ngOnDestroy(): void {

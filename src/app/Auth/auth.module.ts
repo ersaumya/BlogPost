@@ -1,3 +1,4 @@
+import { LogoutEffect } from './store/effects/logout.effect';
 import { UpdateCurrentUserEffect } from './store/effects/updateCurrentUser.effect';
 import { GetCurrentUserEffect } from './store/effects/getCurrentUser.effect';
 import { LoginEffect } from './store/effects/login.effect';
@@ -35,6 +36,7 @@ const routes: Routes = [
     EffectsModule.forFeature([
       RegisterEffect,
       LoginEffect,
+      LogoutEffect,
       GetCurrentUserEffect,
       UpdateCurrentUserEffect
     ]),

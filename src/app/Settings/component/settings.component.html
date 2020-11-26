@@ -28,7 +28,8 @@
                             <textarea type="text" class="form-control" formControlName="bio">
                             </textarea>
                         </fieldset>
-                        <button type="submit" class="btn btn-primary pull-xs-right" [disabled]="settingForm.invalid || (isSubmitting$ | async)">Update</button>
+                        <button type="submit" class="btn btn-primary pull-xs-right"
+                            [disabled]="settingForm.invalid || (isSubmitting$ | async)">Update</button>
                     </fieldset>
                 </form>
                 <hr>
