@@ -1,3 +1,4 @@
+import { AddToFavoriteModule } from './../add-to-favorite/add-to-favorite.module';
 import { TagListModule } from './../tag-list/tag-list.module';
 import { PaginationModule } from './../pagination/pagination.module';
 import { LoadingModule } from './../loading/loading.module';
@@ -21,7 +22,8 @@ import { reducers } from 'src/app/Shared/modules/blogs/store/reducers';
     LoadingModule,
     PaginationModule,
     RouterModule,
-    TagListModule
+    TagListModule,
+    AddToFavoriteModule,
   ],
   exports: [BlogsComponent],
 })

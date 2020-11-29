@@ -12,7 +12,11 @@
         </a>
         <span class="date">{{ article.createdAt | date:'medium' }}</span>
       </div>
-      <div class="pull-xs-right">Add to favorite</div>
+      <div class="pull-xs-right">
+        <app-favorite [isFavorite]="article.favorites" [articleSlug]="article.slug"
+          [favoritesCount]="article.favoritesCount">
+        </app-favorite>
+      </div>
     </div>
     <a [routerLink]="['/articles', article.slug]" class="preview-link">
       <h1>{{ article.title }}</h1>
@@ -21,10 +25,6 @@
       <app-tag-list [tags]="article.tagList"></app-tag-list>
     </a>
   </div>
-  <app-pagination 
-  [total]="(blog$ | async)?.articlesCount"
-  [limit]="limit"
-  [url]="baseUrl"
-  [currentPage]="currentPage">
+  <app-pagination [total]="(blog$ | async)?.articlesCount" [limit]="limit" [url]="baseUrl" [currentPage]="currentPage">
   </app-pagination>
 </div>
