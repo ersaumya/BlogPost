@@ -1,3 +1,4 @@
+import { ProfileModule } from './Profile/profile.module';
 import { SettingsModule } from './Settings/settings.module';
 import { EditArticleModule } from './EditArticle/edit-article.module';
 import { CreateArticleModule } from './CreateArticle/create-article.module';
@@ -44,6 +45,7 @@ const AppConfig: IAppConfig = {
     CreateArticleModule, //order is important as routing of article & create article is same
     ArticleModule,
     EditArticleModule,
+    ProfileModule,
     AppRoutingModule,
     SettingsModule
   ],
