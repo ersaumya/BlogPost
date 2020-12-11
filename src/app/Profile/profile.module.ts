@@ -1,3 +1,5 @@
+import { GetProfileEffect } from './store/effects/getUserProfile.effect';
+import { EffectsModule } from '@ngrx/effects';
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -18,6 +20,7 @@ const routes: Routes = [
   declarations: [ProfileComponent],
   imports: [
     CommonModule,
+    EffectsModule.forFeature([GetProfileEffect]),
     RouterModule.forChild(routes)
   ]
 })
