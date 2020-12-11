@@ -1,10 +1,11 @@
+import { StoreModule } from '@ngrx/store';
 import { GetProfileEffect } from './store/effects/getUserProfile.effect';
 import { EffectsModule } from '@ngrx/effects';
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProfileComponent } from './components/profile/profile.component';
-
+import { reducers } from './store/reducers';
 const routes: Routes = [
   {
     path: 'profiles/:slug',
@@ -21,7 +22,8 @@ const routes: Routes = [
   imports: [
     CommonModule,
     EffectsModule.forFeature([GetProfileEffect]),
-    RouterModule.forChild(routes)
-  ]
+    StoreModule.forFeature('userProfile', reducers),
+    RouterModule.forChild(routes),
+  ],
 })
-export class ProfileModule { }
+export class ProfileModule {}
