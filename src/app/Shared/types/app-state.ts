@@ -1,3 +1,4 @@
+import { UserProfileState } from './../../Profile/types/user-profile-state';
 import { SettingState } from './../../Settings/types/setting-state';
 import { EditArticleState } from './../../EditArticle/types/edit-article-state';
 import { CreateArticleState } from './../../CreateArticle/types/create-article-state';
@@ -13,5 +14,6 @@ export interface AppState {
     article:ArticleState,
     createArticle:CreateArticleState,
     editArticle:EditArticleState,
-    settings:SettingState
+    settings:SettingState,
+    userProfile:UserProfileState
 }
