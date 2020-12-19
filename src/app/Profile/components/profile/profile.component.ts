@@ -5,7 +5,7 @@ import {
   isLoadingSelector,
   userProfileSelector,
 } from './../../store/selectors';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, Params } from '@angular/router';
 import { getUserProfileAction } from './../../store/actions/getUserProfile.action';
 import { select, Store } from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';
@@ -25,7 +25,7 @@ export class ProfileComponent implements OnInit {
   userProfileSubscription: Subscription;
   apiUrl: string;
   slug: string;
-  isCurrentUserProfile$:Observable<boolean>
+  isCurrentUserProfile$: Observable<boolean>;
 
   constructor(
     private store: Store,
@@ -36,7 +36,6 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.initializeValues();
     this.initializeListners();
-    this.fetchData();
   }
 
   initializeValues(): void {
@@ -45,14 +44,16 @@ export class ProfileComponent implements OnInit {
     this.isLoading$ = this.store.pipe(select(isLoadingSelector));
     this.error$ = this.store.pipe(select(errorSelector));
     this.apiUrl = isFavorites
-      ? `/article?favorited=${this.slug}`
+      ? `/articles?favorited=${this.slug}`
       : `/articles?author=${this.slug}`;
-    this.isCurrentUserProfile$=combineLatest(
-      this.store.pipe(select(currentUserSelector),filter(Boolean)),
-      this.store.pipe(select(userProfileSelector),filter(Boolean))
-    ).pipe(map(([currentUser,userProfile]:[CurrentUser,UserProfile])=>{
-      return currentUser.username===userProfile.username
-    }))  
+    this.isCurrentUserProfile$ = combineLatest(
+      this.store.pipe(select(currentUserSelector), filter(Boolean)),
+      this.store.pipe(select(userProfileSelector), filter(Boolean))
+    ).pipe(
+      map(([currentUser, userProfile]: [CurrentUser, UserProfile]) => {
+        return currentUser.username === userProfile.username;
+      })
+    );
   }
 
   initializeListners(): void {
@@ -61,9 +62,13 @@ export class ProfileComponent implements OnInit {
       .subscribe((userProfile: UserProfile) => {
         this.userProfile = userProfile;
       });
+      this.route.params.subscribe((params:Params)=>{
+        this.slug=params.slug
+        this.fetchUserProfile()
+      })
   }
 
-  fetchData(): void {
+  fetchUserProfile(): void {
     this.store.dispatch(getUserProfileAction({ slug: this.slug }));
   }
 }
