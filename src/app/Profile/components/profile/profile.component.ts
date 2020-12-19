@@ -23,7 +23,6 @@ export class ProfileComponent implements OnInit {
   isLoading$: Observable<boolean>;
   error$: Observable<string | null>;
   userProfileSubscription: Subscription;
-  apiUrl: string;
   slug: string;
   isCurrentUserProfile$: Observable<boolean>;
 
@@ -39,13 +38,11 @@ export class ProfileComponent implements OnInit {
   }
 
   initializeValues(): void {
-    const isFavorites = this.router.url.includes('favorites');
+    
     this.slug = this.route.snapshot.paramMap.get('slug');
     this.isLoading$ = this.store.pipe(select(isLoadingSelector));
     this.error$ = this.store.pipe(select(errorSelector));
-    this.apiUrl = isFavorites
-      ? `/articles?favorited=${this.slug}`
-      : `/articles?author=${this.slug}`;
+   
     this.isCurrentUserProfile$ = combineLatest(
       this.store.pipe(select(currentUserSelector), filter(Boolean)),
       this.store.pipe(select(userProfileSelector), filter(Boolean))
@@ -54,6 +51,13 @@ export class ProfileComponent implements OnInit {
         return currentUser.username === userProfile.username;
       })
     );
+  }
+
+  getApiUrl():string{
+    const isFavorites = this.router.url.includes('favorites');
+    return isFavorites
+       ? `/articles?favorited=${this.slug}`
+       : `/articles?author=${this.slug}`;
   }
 
   initializeListners(): void {

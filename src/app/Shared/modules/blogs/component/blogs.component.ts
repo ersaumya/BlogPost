@@ -1,11 +1,22 @@
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { stringify,parseUrl } from 'query-string';
+import { stringify, parseUrl } from 'query-string';
 import { environment } from './../../../../../environments/environment';
-import { blogSelector, errorSelector, isLoadingSelector } from './../store/selectors';
+import {
+  blogSelector,
+  errorSelector,
+  isLoadingSelector,
+} from './../store/selectors';
 import { GetblogResponse } from './../types/getblog-response';
 import { Observable, Subscription } from 'rxjs';
 import { select, Store } from '@ngrx/store';
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 import { getBlogAction } from '../store/actions/getBlog.action';
 
 @Component({
@@ -13,7 +24,7 @@ import { getBlogAction } from '../store/actions/getBlog.action';
   templateUrl: './blogs.component.html',
   styleUrls: ['./blogs.component.scss'],
 })
-export class BlogsComponent implements OnInit, OnDestroy {
+export class BlogsComponent implements OnInit, OnDestroy, OnChanges {
   @Input() apiUrl: string;
 
   blog$: Observable<GetblogResponse | null>;
@@ -22,7 +33,7 @@ export class BlogsComponent implements OnInit, OnDestroy {
   limit = environment.limit;
   baseUrl: string;
   queryParamsSubscription: Subscription;
-  currentPage:number;
+  currentPage: number;
 
   constructor(
     private store: Store,
@@ -31,15 +42,26 @@ export class BlogsComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    //console.log('initial blog', this.apiUrl);
     this.initializeValues();
     this.initializeListiners();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    const ifApiUrlChanged =
+      !changes.apiUrl.firstChange &&
+      changes.apiUrl.currentValue !== changes.apiUrl.previousValue;
+    if (ifApiUrlChanged) {
+      this.fetchBlog();
+    }
   }
 
   initializeListiners(): void {
     this.queryParamsSubscription = this.route.queryParams.subscribe(
       (params: Params) => {
         //console.log('params', params);
-        this.currentPage=Number(params.page || '1')
+        this.currentPage = Number(params.page || '1');
+        //console.log('fetch blog');
         this.fetchBlog();
         //console.log('current page',this.currentPage);
       }
